@@ -1,0 +1,36 @@
+﻿<Window x:Class="Laba5.MainWindow"
+        xmlns:mt="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laba5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="420"
+        MinHeight="500px" MinWidth="400px">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Авторизуйтесь или зарегистрируйтесь" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="22px"/>
+        <TextBox x:Name="LoginTbox" mt:HintAssist.Hint="Логин*" FontSize="25px" Height="50px" Grid.Row="1" />
+        <PasswordBox x:Name="Passbox" mt:HintAssist.Hint="Пароль*" FontSize="25px" Height="50px" Grid.Row="2"/>
+        <Button x:Name="AutorizaBtm" Grid.Row="3" FontSize="20px" Height="40px" Content="Авторизоваться" Click="AutorizaBtm_Click"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.4*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Column="1" Source="/pixil-frame-0 (1).png" Stretch="Uniform"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,57 @@
+﻿<Window x:Class="Laba5.RegistraziyaOkno"
+        xmlns:mt="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laba5"
+        mc:Ignorable="d"
+        Title="RegistraziyaOkno" Height="450" Width="800"
+        MinHeight="300px"
+        MinWidth="300px">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.4*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ExitBtm" Height="50px" FontSize="20px" Content="Выход" Click="ExitBtm_Click"/>
+            <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30px" Text="Зарегестрируйтесь"/>
+            <Image Grid.Column="2" Source="/pixil-frame-0 (1).png" Stretch="Uniform"/>
+        </Grid>
+        <TextBox x:Name="SurnameTbox" mt:HintAssist.Hint="Фамилия*" FontSize="20px" TextAlignment="Center" Grid.Row="1" Height="40px"/>
+        <TextBox x:Name="NameTbox" mt:HintAssist.Hint="Имя*" FontSize="20px" TextAlignment="Center" Grid.Row="2" Height="40px"/>
+        <TextBox x:Name="MiddleNameTbox" mt:HintAssist.Hint="Отчество" FontSize="20px" TextAlignment="Center" Grid.Row="3" Height="40px"/>
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="LoginTbox" mt:HintAssist.Hint="Логин*" FontSize="20px" TextAlignment="Center" Height="40px"/>
+            <TextBox x:Name="PassTbox" mt:HintAssist.Hint="Пароль*" FontSize="20px" TextAlignment="Center" Height="40px" Grid.Column="1"/>
+        </Grid>
+        <TextBox x:Name="GorodTbox" mt:HintAssist.Hint="Город*" FontSize="20px" TextAlignment="Center" Height="40px" Grid.Row="5"/>
+        <TextBox x:Name="StreetTbox" mt:HintAssist.Hint="Улица*" FontSize="20px" TextAlignment="Center" Height="40px" Grid.Row="6"/>
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="DomTbox" mt:HintAssist.Hint="Дом*" FontSize="20px" TextAlignment="Center" Height="40px"/>
+            <TextBox x:Name="KvartiraTbox" Grid.Column="1" mt:HintAssist.Hint="Квартира" FontSize="20px" TextAlignment="Center" Height="40px"/>
+        </Grid>
+        <Button x:Name="ZaregBtm" Content="Зарегестрироваться" FontSize="25px" Height="50px" Grid.Row="8" Click="ZaregBtm_Click"/>
+    </Grid>
+</Window>

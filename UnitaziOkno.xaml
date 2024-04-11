@@ -1,0 +1,55 @@
+﻿<Window x:Class="Laba5.UnitaziOkno"
+        xmlns:mt="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laba5"
+        mc:Ignorable="d"
+        Title="UnitaziOkno" Height="450" Width="800"
+        MinHeight="300px" MinWidth="300px">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="unitaziDG" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="unitaziDG_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding UnitazName}" Header="Название унитаза"/>
+                <DataGridTextColumn Binding="{Binding UnitazPrice}" Header="Цена унитаза"/>
+                <DataGridTextColumn Binding="{Binding UnitazTypes.UnitazType}" Header="Тип унитаза"/>
+                <DataGridTextColumn Binding="{Binding CountryProizvodstvas.CountryProizvodstva}" Header="Страна производства"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.3*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="BackBtm" Width="99px" VerticalAlignment="Top" HorizontalAlignment="Right" Content="Вернуться" Grid.Column="2" Click="BackBtm_Click"/>
+            <Button x:Name="AddBtm" Content="Добавить" Grid.Row="7" Grid.Column="1" Click="AddBtm_Click"/>
+            <Button x:Name="EditBtm" Content="Изменить" Grid.Row="7" Click="EditBtm_Click"/>
+            <Button x:Name="DeleteBtm" Content="Удалить" Grid.Row="7" Grid.Column="2" Click="DeleteBtm_Click"/>
+            <Image Grid.Column="1" Source="/pixil-frame-0 (1).png" Stretch="Uniform"/>
+            <TextBlock Text="Данные для заполнения" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20px" Grid.Row="1" Grid.ColumnSpan="3"/>
+            <TextBox x:Name="UnitazNameTbox" mt:HintAssist.Hint="Название унитаза" FontSize="20px" Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+            <TextBox x:Name="UnitazPriceTbox" mt:HintAssist.Hint="Цена унитаза" FontSize="20px" Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
+            <ComboBox x:Name="UnitazTypeCBox" mt:HintAssist.Hint="Тип унитаза" FontSize="20px" Grid.Row="4" Grid.ColumnSpan="2"/>
+            <Button x:Name="TypeUnitazOkno" Content="Добавить новый" FontSize="12.5px" Grid.Column="2" Grid.Row="4" Click="TypeUnitazOkno_Click"/>
+            <Button x:Name="CountryOkno" Content="Добавить новую" FontSize="12.5px" Grid.Column="2" Grid.Row="5" Click="CountryOkno_Click"/>
+            <ComboBox x:Name="CountryCBox" mt:HintAssist.Hint="Страна производства" FontSize="20px" Grid.Row="5" Grid.ColumnSpan="2"/>
+            <TextBlock x:Name="OshibkaTBlock" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20px" Grid.Row="6" Grid.ColumnSpan="3"/>
+        </Grid>
+    </Grid>
+</Window>

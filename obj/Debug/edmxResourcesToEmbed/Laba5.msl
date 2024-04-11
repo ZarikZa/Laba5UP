@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Laba5ModelContainer" CdmEntityContainer="Laba5Entities">
+    <EntitySetMapping Name="AdresaDostavkis">
+      <EntityTypeMapping TypeName="Laba5Model.AdresaDostavkis">
+        <MappingFragment StoreEntitySet="AdresaDostavkis">
+          <ScalarProperty Name="AdresaDostavki_ID" ColumnName="AdresaDostavki_ID" />
+          <ScalarProperty Name="FK_Gorod" ColumnName="FK_Gorod" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Dom" ColumnName="Dom" />
+          <ScalarProperty Name="Kvartira" ColumnName="Kvartira" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bills">
+      <EntityTypeMapping TypeName="Laba5Model.Bills">
+        <MappingFragment StoreEntitySet="Bills">
+          <ScalarProperty Name="Bill_ID" ColumnName="Bill_ID" />
+          <ScalarProperty Name="FK_TypeOplati" ColumnName="FK_TypeOplati" />
+          <ScalarProperty Name="FK_Client" ColumnName="FK_Client" />
+          <ScalarProperty Name="FK_TypeDostavki" ColumnName="FK_TypeDostavki" />
+          <ScalarProperty Name="DateBill" ColumnName="DateBill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="Laba5Model.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+          <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientMiddleName" ColumnName="ClientMiddleName" />
+          <ScalarProperty Name="FK_AdresDostavki" ColumnName="FK_AdresDostavki" />
+          <ScalarProperty Name="FK_LoginPass" ColumnName="FK_LoginPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountryProizvodstvas">
+      <EntityTypeMapping TypeName="Laba5Model.CountryProizvodstvas">
+        <MappingFragment StoreEntitySet="CountryProizvodstvas">
+          <ScalarProperty Name="CountryProizvodstva_ID" ColumnName="CountryProizvodstva_ID" />
+          <ScalarProperty Name="CountryProizvodstva" ColumnName="CountryProizvodstva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dolznostis">
+      <EntityTypeMapping TypeName="Laba5Model.Dolznostis">
+        <MappingFragment StoreEntitySet="Dolznostis">
+          <ScalarProperty Name="Dolznosti_ID" ColumnName="Dolznosti_ID" />
+          <ScalarProperty Name="DolznostName" ColumnName="DolznostName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gorods">
+      <EntityTypeMapping TypeName="Laba5Model.Gorods">
+        <MappingFragment StoreEntitySet="Gorods">
+          <ScalarProperty Name="Gorod_ID" ColumnName="Gorod_ID" />
+          <ScalarProperty Name="GorodName" ColumnName="GorodName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginPasses">
+      <EntityTypeMapping TypeName="Laba5Model.LoginPasses">
+        <MappingFragment StoreEntitySet="LoginPasses">
+          <ScalarProperty Name="LoginPass_ID" ColumnName="LoginPass_ID" />
+          <ScalarProperty Name="Loginn" ColumnName="Loginn" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="FK_Dolznosti" ColumnName="FK_Dolznosti" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SNM_Sortudnicks">
+      <EntityTypeMapping TypeName="Laba5Model.SNM_Sortudnicks">
+        <MappingFragment StoreEntitySet="SNM_Sortudnicks">
+          <ScalarProperty Name="SNM_Sortudnick_ID" ColumnName="SNM_Sortudnick_ID" />
+          <ScalarProperty Name="SortudnickSurname" ColumnName="SortudnickSurname" />
+          <ScalarProperty Name="SortudnickName" ColumnName="SortudnickName" />
+          <ScalarProperty Name="SortudnickMiddleName" ColumnName="SortudnickMiddleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotrudnicks">
+      <EntityTypeMapping TypeName="Laba5Model.Sotrudnicks">
+        <MappingFragment StoreEntitySet="Sotrudnicks">
+          <ScalarProperty Name="Sotrudnick_ID" ColumnName="Sotrudnick_ID" />
+          <ScalarProperty Name="FK_Dolznost" ColumnName="FK_Dolznost" />
+          <ScalarProperty Name="FK_SNM_Sortudnick" ColumnName="FK_SNM_Sortudnick" />
+          <ScalarProperty Name="FK_LoginPass" ColumnName="FK_LoginPass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeDostavkis">
+      <EntityTypeMapping TypeName="Laba5Model.TypeDostavkis">
+        <MappingFragment StoreEntitySet="TypeDostavkis">
+          <ScalarProperty Name="TypeDostavki_ID" ColumnName="TypeDostavki_ID" />
+          <ScalarProperty Name="TypeDostavki" ColumnName="TypeDostavki" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOplatis">
+      <EntityTypeMapping TypeName="Laba5Model.TypeOplatis">
+        <MappingFragment StoreEntitySet="TypeOplatis">
+          <ScalarProperty Name="TypeOplati_ID" ColumnName="TypeOplati_ID" />
+          <ScalarProperty Name="TypeOplati" ColumnName="TypeOplati" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unitazs">
+      <EntityTypeMapping TypeName="Laba5Model.Unitazs">
+        <MappingFragment StoreEntitySet="Unitazs">
+          <ScalarProperty Name="Unitaz_ID" ColumnName="Unitaz_ID" />
+          <ScalarProperty Name="UnitazName" ColumnName="UnitazName" />
+          <ScalarProperty Name="FK_UnitazType" ColumnName="FK_UnitazType" />
+          <ScalarProperty Name="UnitazPrice" ColumnName="UnitazPrice" />
+          <ScalarProperty Name="FK_CountryProizvodstva" ColumnName="FK_CountryProizvodstva" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UnitazTypes">
+      <EntityTypeMapping TypeName="Laba5Model.UnitazTypes">
+        <MappingFragment StoreEntitySet="UnitazTypes">
+          <ScalarProperty Name="UnitazType_ID" ColumnName="UnitazType_ID" />
+          <ScalarProperty Name="UnitazType" ColumnName="UnitazType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zakazs">
+      <EntityTypeMapping TypeName="Laba5Model.Zakazs">
+        <MappingFragment StoreEntitySet="Zakazs">
+          <ScalarProperty Name="Zakaz_ID" ColumnName="Zakaz_ID" />
+          <ScalarProperty Name="FK_Unitaz" ColumnName="FK_Unitaz" />
+          <ScalarProperty Name="FK_Bill" ColumnName="FK_Bill" />
+          <ScalarProperty Name="KolvoUnitaz" ColumnName="KolvoUnitaz" />
+          <ScalarProperty Name="PriceBill" ColumnName="PriceBill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

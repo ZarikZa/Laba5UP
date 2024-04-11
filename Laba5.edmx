@@ -1,0 +1,924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Laba5Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdresaDostavkis">
+          <Key>
+            <PropertyRef Name="AdresaDostavki_ID" />
+          </Key>
+          <Property Name="AdresaDostavki_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Gorod" Type="int" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Dom" Type="int" Nullable="false" />
+          <Property Name="Kvartira" Type="int" />
+        </EntityType>
+        <EntityType Name="Bills">
+          <Key>
+            <PropertyRef Name="Bill_ID" />
+          </Key>
+          <Property Name="Bill_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TypeOplati" Type="int" Nullable="false" />
+          <Property Name="FK_Client" Type="int" Nullable="false" />
+          <Property Name="FK_TypeDostavki" Type="int" Nullable="false" />
+          <Property Name="DateBill" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientSurname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientMiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="FK_AdresDostavki" Type="int" Nullable="false" />
+          <Property Name="FK_LoginPass" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CountryProizvodstvas">
+          <Key>
+            <PropertyRef Name="CountryProizvodstva_ID" />
+          </Key>
+          <Property Name="CountryProizvodstva_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryProizvodstva" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dolznostis">
+          <Key>
+            <PropertyRef Name="Dolznosti_ID" />
+          </Key>
+          <Property Name="Dolznosti_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DolznostName" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gorods">
+          <Key>
+            <PropertyRef Name="Gorod_ID" />
+          </Key>
+          <Property Name="Gorod_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GorodName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginPasses">
+          <Key>
+            <PropertyRef Name="LoginPass_ID" />
+          </Key>
+          <Property Name="LoginPass_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Loginn" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Pass" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FK_Dolznosti" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SNM_Sortudnicks">
+          <Key>
+            <PropertyRef Name="SNM_Sortudnick_ID" />
+          </Key>
+          <Property Name="SNM_Sortudnick_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SortudnickSurname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SortudnickName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SortudnickMiddleName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sotrudnicks">
+          <Key>
+            <PropertyRef Name="Sotrudnick_ID" />
+          </Key>
+          <Property Name="Sotrudnick_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Dolznost" Type="int" Nullable="false" />
+          <Property Name="FK_SNM_Sortudnick" Type="int" Nullable="false" />
+          <Property Name="FK_LoginPass" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeDostavkis">
+          <Key>
+            <PropertyRef Name="TypeDostavki_ID" />
+          </Key>
+          <Property Name="TypeDostavki_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeDostavki" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOplatis">
+          <Key>
+            <PropertyRef Name="TypeOplati_ID" />
+          </Key>
+          <Property Name="TypeOplati_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOplati" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Unitazs">
+          <Key>
+            <PropertyRef Name="Unitaz_ID" />
+          </Key>
+          <Property Name="Unitaz_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitazName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FK_UnitazType" Type="int" Nullable="false" />
+          <Property Name="UnitazPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FK_CountryProizvodstva" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UnitazTypes">
+          <Key>
+            <PropertyRef Name="UnitazType_ID" />
+          </Key>
+          <Property Name="UnitazType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitazType" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zakazs">
+          <Key>
+            <PropertyRef Name="Zakaz_ID" />
+          </Key>
+          <Property Name="Zakaz_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Unitaz" Type="int" Nullable="false" />
+          <Property Name="FK_Bill" Type="int" Nullable="false" />
+          <Property Name="KolvoUnitaz" Type="int" Nullable="false" />
+          <Property Name="PriceBill" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AdresaDos__FK_Go__4BAC3F29">
+          <End Role="Gorods" Type="Self.Gorods" Multiplicity="1" />
+          <End Role="AdresaDostavkis" Type="Self.AdresaDostavkis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gorods">
+              <PropertyRef Name="Gorod_ID" />
+            </Principal>
+            <Dependent Role="AdresaDostavkis">
+              <PropertyRef Name="FK_Gorod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bills__FK_Client__619B8048">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="FK_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bills__FK_TypeDo__628FA481">
+          <End Role="TypeDostavkis" Type="Self.TypeDostavkis" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeDostavkis">
+              <PropertyRef Name="TypeDostavki_ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="FK_TypeDostavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bills__FK_TypeOp__60A75C0F">
+          <End Role="TypeOplatis" Type="Self.TypeOplatis" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOplatis">
+              <PropertyRef Name="TypeOplati_ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="FK_TypeOplati" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clients__FK_Adre__4F7CD00D">
+          <End Role="AdresaDostavkis" Type="Self.AdresaDostavkis" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdresaDostavkis">
+              <PropertyRef Name="AdresaDostavki_ID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="FK_AdresDostavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clients__FK_Logi__5070F446">
+          <End Role="LoginPasses" Type="Self.LoginPasses" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginPasses">
+              <PropertyRef Name="LoginPass_ID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="FK_LoginPass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LoginPass__FK_Do__44FF419A">
+          <End Role="Dolznostis" Type="Self.Dolznostis" Multiplicity="1" />
+          <End Role="LoginPasses" Type="Self.LoginPasses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolznostis">
+              <PropertyRef Name="Dolznosti_ID" />
+            </Principal>
+            <Dependent Role="LoginPasses">
+              <PropertyRef Name="FK_Dolznosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sotrudnic__FK_Do__5629CD9C">
+          <End Role="Dolznostis" Type="Self.Dolznostis" Multiplicity="1" />
+          <End Role="Sotrudnicks" Type="Self.Sotrudnicks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolznostis">
+              <PropertyRef Name="Dolznosti_ID" />
+            </Principal>
+            <Dependent Role="Sotrudnicks">
+              <PropertyRef Name="FK_Dolznost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sotrudnic__FK_Lo__5812160E">
+          <End Role="LoginPasses" Type="Self.LoginPasses" Multiplicity="1" />
+          <End Role="Sotrudnicks" Type="Self.Sotrudnicks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginPasses">
+              <PropertyRef Name="LoginPass_ID" />
+            </Principal>
+            <Dependent Role="Sotrudnicks">
+              <PropertyRef Name="FK_LoginPass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sotrudnic__FK_SN__571DF1D5">
+          <End Role="SNM_Sortudnicks" Type="Self.SNM_Sortudnicks" Multiplicity="1" />
+          <End Role="Sotrudnicks" Type="Self.Sotrudnicks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SNM_Sortudnicks">
+              <PropertyRef Name="SNM_Sortudnick_ID" />
+            </Principal>
+            <Dependent Role="Sotrudnicks">
+              <PropertyRef Name="FK_SNM_Sortudnick" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Unitazs__FK_Coun__3F466844">
+          <End Role="CountryProizvodstvas" Type="Self.CountryProizvodstvas" Multiplicity="1" />
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryProizvodstvas">
+              <PropertyRef Name="CountryProizvodstva_ID" />
+            </Principal>
+            <Dependent Role="Unitazs">
+              <PropertyRef Name="FK_CountryProizvodstva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Unitazs__FK_Unit__3E52440B">
+          <End Role="UnitazTypes" Type="Self.UnitazTypes" Multiplicity="1" />
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitazTypes">
+              <PropertyRef Name="UnitazType_ID" />
+            </Principal>
+            <Dependent Role="Unitazs">
+              <PropertyRef Name="FK_UnitazType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zakazs__FK_Bill__66603565">
+          <End Role="Bills" Type="Self.Bills" Multiplicity="1" />
+          <End Role="Zakazs" Type="Self.Zakazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bills">
+              <PropertyRef Name="Bill_ID" />
+            </Principal>
+            <Dependent Role="Zakazs">
+              <PropertyRef Name="FK_Bill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zakazs__FK_Unita__656C112C">
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="1" />
+          <End Role="Zakazs" Type="Self.Zakazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unitazs">
+              <PropertyRef Name="Unitaz_ID" />
+            </Principal>
+            <Dependent Role="Zakazs">
+              <PropertyRef Name="FK_Unitaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Laba5ModelContainer">
+          <EntitySet Name="AdresaDostavkis" EntityType="Self.AdresaDostavkis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bills" EntityType="Self.Bills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryProizvodstvas" EntityType="Self.CountryProizvodstvas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dolznostis" EntityType="Self.Dolznostis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gorods" EntityType="Self.Gorods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginPasses" EntityType="Self.LoginPasses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SNM_Sortudnicks" EntityType="Self.SNM_Sortudnicks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudnicks" EntityType="Self.Sotrudnicks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeDostavkis" EntityType="Self.TypeDostavkis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOplatis" EntityType="Self.TypeOplatis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unitazs" EntityType="Self.Unitazs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnitazTypes" EntityType="Self.UnitazTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakazs" EntityType="Self.Zakazs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AdresaDos__FK_Go__4BAC3F29" Association="Self.FK__AdresaDos__FK_Go__4BAC3F29">
+            <End Role="Gorods" EntitySet="Gorods" />
+            <End Role="AdresaDostavkis" EntitySet="AdresaDostavkis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bills__FK_Client__619B8048" Association="Self.FK__Bills__FK_Client__619B8048">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bills__FK_TypeDo__628FA481" Association="Self.FK__Bills__FK_TypeDo__628FA481">
+            <End Role="TypeDostavkis" EntitySet="TypeDostavkis" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bills__FK_TypeOp__60A75C0F" Association="Self.FK__Bills__FK_TypeOp__60A75C0F">
+            <End Role="TypeOplatis" EntitySet="TypeOplatis" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clients__FK_Adre__4F7CD00D" Association="Self.FK__Clients__FK_Adre__4F7CD00D">
+            <End Role="AdresaDostavkis" EntitySet="AdresaDostavkis" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clients__FK_Logi__5070F446" Association="Self.FK__Clients__FK_Logi__5070F446">
+            <End Role="LoginPasses" EntitySet="LoginPasses" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LoginPass__FK_Do__44FF419A" Association="Self.FK__LoginPass__FK_Do__44FF419A">
+            <End Role="Dolznostis" EntitySet="Dolznostis" />
+            <End Role="LoginPasses" EntitySet="LoginPasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__FK_Do__5629CD9C" Association="Self.FK__Sotrudnic__FK_Do__5629CD9C">
+            <End Role="Dolznostis" EntitySet="Dolznostis" />
+            <End Role="Sotrudnicks" EntitySet="Sotrudnicks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__FK_Lo__5812160E" Association="Self.FK__Sotrudnic__FK_Lo__5812160E">
+            <End Role="LoginPasses" EntitySet="LoginPasses" />
+            <End Role="Sotrudnicks" EntitySet="Sotrudnicks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__FK_SN__571DF1D5" Association="Self.FK__Sotrudnic__FK_SN__571DF1D5">
+            <End Role="SNM_Sortudnicks" EntitySet="SNM_Sortudnicks" />
+            <End Role="Sotrudnicks" EntitySet="Sotrudnicks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Unitazs__FK_Coun__3F466844" Association="Self.FK__Unitazs__FK_Coun__3F466844">
+            <End Role="CountryProizvodstvas" EntitySet="CountryProizvodstvas" />
+            <End Role="Unitazs" EntitySet="Unitazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Unitazs__FK_Unit__3E52440B" Association="Self.FK__Unitazs__FK_Unit__3E52440B">
+            <End Role="UnitazTypes" EntitySet="UnitazTypes" />
+            <End Role="Unitazs" EntitySet="Unitazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zakazs__FK_Bill__66603565" Association="Self.FK__Zakazs__FK_Bill__66603565">
+            <End Role="Bills" EntitySet="Bills" />
+            <End Role="Zakazs" EntitySet="Zakazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zakazs__FK_Unita__656C112C" Association="Self.FK__Zakazs__FK_Unita__656C112C">
+            <End Role="Unitazs" EntitySet="Unitazs" />
+            <End Role="Zakazs" EntitySet="Zakazs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Laba5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdresaDostavkis">
+          <Key>
+            <PropertyRef Name="AdresaDostavki_ID" />
+          </Key>
+          <Property Name="AdresaDostavki_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Gorod" Type="Int32" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dom" Type="Int32" Nullable="false" />
+          <Property Name="Kvartira" Type="Int32" />
+          <NavigationProperty Name="Gorods" Relationship="Self.FK__AdresaDos__FK_Go__4BAC3F29" FromRole="AdresaDostavkis" ToRole="Gorods" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Clients__FK_Adre__4F7CD00D" FromRole="AdresaDostavkis" ToRole="Clients" />
+        </EntityType>
+        <EntityType Name="Bills">
+          <Key>
+            <PropertyRef Name="Bill_ID" />
+          </Key>
+          <Property Name="Bill_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_TypeOplati" Type="Int32" Nullable="false" />
+          <Property Name="FK_Client" Type="Int32" Nullable="false" />
+          <Property Name="FK_TypeDostavki" Type="Int32" Nullable="false" />
+          <Property Name="DateBill" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Bills__FK_Client__619B8048" FromRole="Bills" ToRole="Clients" />
+          <NavigationProperty Name="TypeDostavkis" Relationship="Self.FK__Bills__FK_TypeDo__628FA481" FromRole="Bills" ToRole="TypeDostavkis" />
+          <NavigationProperty Name="TypeOplatis" Relationship="Self.FK__Bills__FK_TypeOp__60A75C0F" FromRole="Bills" ToRole="TypeOplatis" />
+          <NavigationProperty Name="Zakazs" Relationship="Self.FK__Zakazs__FK_Bill__66603565" FromRole="Bills" ToRole="Zakazs" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Client_ID" />
+          </Key>
+          <Property Name="Client_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FK_AdresDostavki" Type="Int32" Nullable="false" />
+          <Property Name="FK_LoginPass" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AdresaDostavkis" Relationship="Self.FK__Clients__FK_Adre__4F7CD00D" FromRole="Clients" ToRole="AdresaDostavkis" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bills__FK_Client__619B8048" FromRole="Clients" ToRole="Bills" />
+          <NavigationProperty Name="LoginPasses" Relationship="Self.FK__Clients__FK_Logi__5070F446" FromRole="Clients" ToRole="LoginPasses" />
+        </EntityType>
+        <EntityType Name="CountryProizvodstvas">
+          <Key>
+            <PropertyRef Name="CountryProizvodstva_ID" />
+          </Key>
+          <Property Name="CountryProizvodstva_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryProizvodstva" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Unitazs" Relationship="Self.FK__Unitazs__FK_Coun__3F466844" FromRole="CountryProizvodstvas" ToRole="Unitazs" />
+        </EntityType>
+        <EntityType Name="Dolznostis">
+          <Key>
+            <PropertyRef Name="Dolznosti_ID" />
+          </Key>
+          <Property Name="Dolznosti_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DolznostName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LoginPasses" Relationship="Self.FK__LoginPass__FK_Do__44FF419A" FromRole="Dolznostis" ToRole="LoginPasses" />
+          <NavigationProperty Name="Sotrudnicks" Relationship="Self.FK__Sotrudnic__FK_Do__5629CD9C" FromRole="Dolznostis" ToRole="Sotrudnicks" />
+        </EntityType>
+        <EntityType Name="Gorods">
+          <Key>
+            <PropertyRef Name="Gorod_ID" />
+          </Key>
+          <Property Name="Gorod_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GorodName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AdresaDostavkis" Relationship="Self.FK__AdresaDos__FK_Go__4BAC3F29" FromRole="Gorods" ToRole="AdresaDostavkis" />
+        </EntityType>
+        <EntityType Name="LoginPasses">
+          <Key>
+            <PropertyRef Name="LoginPass_ID" />
+          </Key>
+          <Property Name="LoginPass_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Loginn" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FK_Dolznosti" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK__Clients__FK_Logi__5070F446" FromRole="LoginPasses" ToRole="Clients" />
+          <NavigationProperty Name="Dolznostis" Relationship="Self.FK__LoginPass__FK_Do__44FF419A" FromRole="LoginPasses" ToRole="Dolznostis" />
+          <NavigationProperty Name="Sotrudnicks" Relationship="Self.FK__Sotrudnic__FK_Lo__5812160E" FromRole="LoginPasses" ToRole="Sotrudnicks" />
+        </EntityType>
+        <EntityType Name="SNM_Sortudnicks">
+          <Key>
+            <PropertyRef Name="SNM_Sortudnick_ID" />
+          </Key>
+          <Property Name="SNM_Sortudnick_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SortudnickSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SortudnickName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SortudnickMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sotrudnicks" Relationship="Self.FK__Sotrudnic__FK_SN__571DF1D5" FromRole="SNM_Sortudnicks" ToRole="Sotrudnicks" />
+        </EntityType>
+        <EntityType Name="Sotrudnicks">
+          <Key>
+            <PropertyRef Name="Sotrudnick_ID" />
+          </Key>
+          <Property Name="Sotrudnick_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Dolznost" Type="Int32" Nullable="false" />
+          <Property Name="FK_SNM_Sortudnick" Type="Int32" Nullable="false" />
+          <Property Name="FK_LoginPass" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dolznostis" Relationship="Self.FK__Sotrudnic__FK_Do__5629CD9C" FromRole="Sotrudnicks" ToRole="Dolznostis" />
+          <NavigationProperty Name="LoginPasses" Relationship="Self.FK__Sotrudnic__FK_Lo__5812160E" FromRole="Sotrudnicks" ToRole="LoginPasses" />
+          <NavigationProperty Name="SNM_Sortudnicks" Relationship="Self.FK__Sotrudnic__FK_SN__571DF1D5" FromRole="Sotrudnicks" ToRole="SNM_Sortudnicks" />
+        </EntityType>
+        <EntityType Name="TypeDostavkis">
+          <Key>
+            <PropertyRef Name="TypeDostavki_ID" />
+          </Key>
+          <Property Name="TypeDostavki_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeDostavki" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bills__FK_TypeDo__628FA481" FromRole="TypeDostavkis" ToRole="Bills" />
+        </EntityType>
+        <EntityType Name="TypeOplatis">
+          <Key>
+            <PropertyRef Name="TypeOplati_ID" />
+          </Key>
+          <Property Name="TypeOplati_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOplati" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Bills__FK_TypeOp__60A75C0F" FromRole="TypeOplatis" ToRole="Bills" />
+        </EntityType>
+        <EntityType Name="Unitazs">
+          <Key>
+            <PropertyRef Name="Unitaz_ID" />
+          </Key>
+          <Property Name="Unitaz_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitazName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FK_UnitazType" Type="Int32" Nullable="false" />
+          <Property Name="UnitazPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FK_CountryProizvodstva" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CountryProizvodstvas" Relationship="Self.FK__Unitazs__FK_Coun__3F466844" FromRole="Unitazs" ToRole="CountryProizvodstvas" />
+          <NavigationProperty Name="UnitazTypes" Relationship="Self.FK__Unitazs__FK_Unit__3E52440B" FromRole="Unitazs" ToRole="UnitazTypes" />
+          <NavigationProperty Name="Zakazs" Relationship="Self.FK__Zakazs__FK_Unita__656C112C" FromRole="Unitazs" ToRole="Zakazs" />
+        </EntityType>
+        <EntityType Name="UnitazTypes">
+          <Key>
+            <PropertyRef Name="UnitazType_ID" />
+          </Key>
+          <Property Name="UnitazType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitazType" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Unitazs" Relationship="Self.FK__Unitazs__FK_Unit__3E52440B" FromRole="UnitazTypes" ToRole="Unitazs" />
+        </EntityType>
+        <EntityType Name="Zakazs">
+          <Key>
+            <PropertyRef Name="Zakaz_ID" />
+          </Key>
+          <Property Name="Zakaz_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_Unitaz" Type="Int32" Nullable="false" />
+          <Property Name="FK_Bill" Type="Int32" Nullable="false" />
+          <Property Name="KolvoUnitaz" Type="Int32" Nullable="false" />
+          <Property Name="PriceBill" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Bills" Relationship="Self.FK__Zakazs__FK_Bill__66603565" FromRole="Zakazs" ToRole="Bills" />
+          <NavigationProperty Name="Unitazs" Relationship="Self.FK__Zakazs__FK_Unita__656C112C" FromRole="Zakazs" ToRole="Unitazs" />
+        </EntityType>
+        <Association Name="FK__AdresaDos__FK_Go__4BAC3F29">
+          <End Role="Gorods" Type="Self.Gorods" Multiplicity="1" />
+          <End Role="AdresaDostavkis" Type="Self.AdresaDostavkis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gorods">
+              <PropertyRef Name="Gorod_ID" />
+            </Principal>
+            <Dependent Role="AdresaDostavkis">
+              <PropertyRef Name="FK_Gorod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clients__FK_Adre__4F7CD00D">
+          <End Role="AdresaDostavkis" Type="Self.AdresaDostavkis" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdresaDostavkis">
+              <PropertyRef Name="AdresaDostavki_ID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="FK_AdresDostavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bills__FK_Client__619B8048">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Client_ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="FK_Client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bills__FK_TypeDo__628FA481">
+          <End Role="TypeDostavkis" Type="Self.TypeDostavkis" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeDostavkis">
+              <PropertyRef Name="TypeDostavki_ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="FK_TypeDostavki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Bills__FK_TypeOp__60A75C0F">
+          <End Role="TypeOplatis" Type="Self.TypeOplatis" Multiplicity="1" />
+          <End Role="Bills" Type="Self.Bills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOplatis">
+              <PropertyRef Name="TypeOplati_ID" />
+            </Principal>
+            <Dependent Role="Bills">
+              <PropertyRef Name="FK_TypeOplati" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zakazs__FK_Bill__66603565">
+          <End Role="Bills" Type="Self.Bills" Multiplicity="1" />
+          <End Role="Zakazs" Type="Self.Zakazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bills">
+              <PropertyRef Name="Bill_ID" />
+            </Principal>
+            <Dependent Role="Zakazs">
+              <PropertyRef Name="FK_Bill" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Clients__FK_Logi__5070F446">
+          <End Role="LoginPasses" Type="Self.LoginPasses" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginPasses">
+              <PropertyRef Name="LoginPass_ID" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="FK_LoginPass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Unitazs__FK_Coun__3F466844">
+          <End Role="CountryProizvodstvas" Type="Self.CountryProizvodstvas" Multiplicity="1" />
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryProizvodstvas">
+              <PropertyRef Name="CountryProizvodstva_ID" />
+            </Principal>
+            <Dependent Role="Unitazs">
+              <PropertyRef Name="FK_CountryProizvodstva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LoginPass__FK_Do__44FF419A">
+          <End Role="Dolznostis" Type="Self.Dolznostis" Multiplicity="1" />
+          <End Role="LoginPasses" Type="Self.LoginPasses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolznostis">
+              <PropertyRef Name="Dolznosti_ID" />
+            </Principal>
+            <Dependent Role="LoginPasses">
+              <PropertyRef Name="FK_Dolznosti" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sotrudnic__FK_Do__5629CD9C">
+          <End Role="Dolznostis" Type="Self.Dolznostis" Multiplicity="1" />
+          <End Role="Sotrudnicks" Type="Self.Sotrudnicks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolznostis">
+              <PropertyRef Name="Dolznosti_ID" />
+            </Principal>
+            <Dependent Role="Sotrudnicks">
+              <PropertyRef Name="FK_Dolznost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sotrudnic__FK_Lo__5812160E">
+          <End Role="LoginPasses" Type="Self.LoginPasses" Multiplicity="1" />
+          <End Role="Sotrudnicks" Type="Self.Sotrudnicks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginPasses">
+              <PropertyRef Name="LoginPass_ID" />
+            </Principal>
+            <Dependent Role="Sotrudnicks">
+              <PropertyRef Name="FK_LoginPass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sotrudnic__FK_SN__571DF1D5">
+          <End Role="SNM_Sortudnicks" Type="Self.SNM_Sortudnicks" Multiplicity="1" />
+          <End Role="Sotrudnicks" Type="Self.Sotrudnicks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SNM_Sortudnicks">
+              <PropertyRef Name="SNM_Sortudnick_ID" />
+            </Principal>
+            <Dependent Role="Sotrudnicks">
+              <PropertyRef Name="FK_SNM_Sortudnick" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Unitazs__FK_Unit__3E52440B">
+          <End Role="UnitazTypes" Type="Self.UnitazTypes" Multiplicity="1" />
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnitazTypes">
+              <PropertyRef Name="UnitazType_ID" />
+            </Principal>
+            <Dependent Role="Unitazs">
+              <PropertyRef Name="FK_UnitazType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zakazs__FK_Unita__656C112C">
+          <End Role="Unitazs" Type="Self.Unitazs" Multiplicity="1" />
+          <End Role="Zakazs" Type="Self.Zakazs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unitazs">
+              <PropertyRef Name="Unitaz_ID" />
+            </Principal>
+            <Dependent Role="Zakazs">
+              <PropertyRef Name="FK_Unitaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Laba5Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdresaDostavkis" EntityType="Self.AdresaDostavkis" />
+          <EntitySet Name="Bills" EntityType="Self.Bills" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="CountryProizvodstvas" EntityType="Self.CountryProizvodstvas" />
+          <EntitySet Name="Dolznostis" EntityType="Self.Dolznostis" />
+          <EntitySet Name="Gorods" EntityType="Self.Gorods" />
+          <EntitySet Name="LoginPasses" EntityType="Self.LoginPasses" />
+          <EntitySet Name="SNM_Sortudnicks" EntityType="Self.SNM_Sortudnicks" />
+          <EntitySet Name="Sotrudnicks" EntityType="Self.Sotrudnicks" />
+          <EntitySet Name="TypeDostavkis" EntityType="Self.TypeDostavkis" />
+          <EntitySet Name="TypeOplatis" EntityType="Self.TypeOplatis" />
+          <EntitySet Name="Unitazs" EntityType="Self.Unitazs" />
+          <EntitySet Name="UnitazTypes" EntityType="Self.UnitazTypes" />
+          <EntitySet Name="Zakazs" EntityType="Self.Zakazs" />
+          <AssociationSet Name="FK__AdresaDos__FK_Go__4BAC3F29" Association="Self.FK__AdresaDos__FK_Go__4BAC3F29">
+            <End Role="Gorods" EntitySet="Gorods" />
+            <End Role="AdresaDostavkis" EntitySet="AdresaDostavkis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clients__FK_Adre__4F7CD00D" Association="Self.FK__Clients__FK_Adre__4F7CD00D">
+            <End Role="AdresaDostavkis" EntitySet="AdresaDostavkis" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bills__FK_Client__619B8048" Association="Self.FK__Bills__FK_Client__619B8048">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bills__FK_TypeDo__628FA481" Association="Self.FK__Bills__FK_TypeDo__628FA481">
+            <End Role="TypeDostavkis" EntitySet="TypeDostavkis" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Bills__FK_TypeOp__60A75C0F" Association="Self.FK__Bills__FK_TypeOp__60A75C0F">
+            <End Role="TypeOplatis" EntitySet="TypeOplatis" />
+            <End Role="Bills" EntitySet="Bills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zakazs__FK_Bill__66603565" Association="Self.FK__Zakazs__FK_Bill__66603565">
+            <End Role="Bills" EntitySet="Bills" />
+            <End Role="Zakazs" EntitySet="Zakazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Clients__FK_Logi__5070F446" Association="Self.FK__Clients__FK_Logi__5070F446">
+            <End Role="LoginPasses" EntitySet="LoginPasses" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Unitazs__FK_Coun__3F466844" Association="Self.FK__Unitazs__FK_Coun__3F466844">
+            <End Role="CountryProizvodstvas" EntitySet="CountryProizvodstvas" />
+            <End Role="Unitazs" EntitySet="Unitazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LoginPass__FK_Do__44FF419A" Association="Self.FK__LoginPass__FK_Do__44FF419A">
+            <End Role="Dolznostis" EntitySet="Dolznostis" />
+            <End Role="LoginPasses" EntitySet="LoginPasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__FK_Do__5629CD9C" Association="Self.FK__Sotrudnic__FK_Do__5629CD9C">
+            <End Role="Dolznostis" EntitySet="Dolznostis" />
+            <End Role="Sotrudnicks" EntitySet="Sotrudnicks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__FK_Lo__5812160E" Association="Self.FK__Sotrudnic__FK_Lo__5812160E">
+            <End Role="LoginPasses" EntitySet="LoginPasses" />
+            <End Role="Sotrudnicks" EntitySet="Sotrudnicks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sotrudnic__FK_SN__571DF1D5" Association="Self.FK__Sotrudnic__FK_SN__571DF1D5">
+            <End Role="SNM_Sortudnicks" EntitySet="SNM_Sortudnicks" />
+            <End Role="Sotrudnicks" EntitySet="Sotrudnicks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Unitazs__FK_Unit__3E52440B" Association="Self.FK__Unitazs__FK_Unit__3E52440B">
+            <End Role="UnitazTypes" EntitySet="UnitazTypes" />
+            <End Role="Unitazs" EntitySet="Unitazs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zakazs__FK_Unita__656C112C" Association="Self.FK__Zakazs__FK_Unita__656C112C">
+            <End Role="Unitazs" EntitySet="Unitazs" />
+            <End Role="Zakazs" EntitySet="Zakazs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Laba5ModelContainer" CdmEntityContainer="Laba5Entities">
+          <EntitySetMapping Name="AdresaDostavkis">
+            <EntityTypeMapping TypeName="Laba5Model.AdresaDostavkis">
+              <MappingFragment StoreEntitySet="AdresaDostavkis">
+                <ScalarProperty Name="AdresaDostavki_ID" ColumnName="AdresaDostavki_ID" />
+                <ScalarProperty Name="FK_Gorod" ColumnName="FK_Gorod" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Dom" ColumnName="Dom" />
+                <ScalarProperty Name="Kvartira" ColumnName="Kvartira" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="Laba5Model.Bills">
+              <MappingFragment StoreEntitySet="Bills">
+                <ScalarProperty Name="Bill_ID" ColumnName="Bill_ID" />
+                <ScalarProperty Name="FK_TypeOplati" ColumnName="FK_TypeOplati" />
+                <ScalarProperty Name="FK_Client" ColumnName="FK_Client" />
+                <ScalarProperty Name="FK_TypeDostavki" ColumnName="FK_TypeDostavki" />
+                <ScalarProperty Name="DateBill" ColumnName="DateBill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="Laba5Model.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
+                <ScalarProperty Name="ClientSurname" ColumnName="ClientSurname" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientMiddleName" ColumnName="ClientMiddleName" />
+                <ScalarProperty Name="FK_AdresDostavki" ColumnName="FK_AdresDostavki" />
+                <ScalarProperty Name="FK_LoginPass" ColumnName="FK_LoginPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryProizvodstvas">
+            <EntityTypeMapping TypeName="Laba5Model.CountryProizvodstvas">
+              <MappingFragment StoreEntitySet="CountryProizvodstvas">
+                <ScalarProperty Name="CountryProizvodstva_ID" ColumnName="CountryProizvodstva_ID" />
+                <ScalarProperty Name="CountryProizvodstva" ColumnName="CountryProizvodstva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dolznostis">
+            <EntityTypeMapping TypeName="Laba5Model.Dolznostis">
+              <MappingFragment StoreEntitySet="Dolznostis">
+                <ScalarProperty Name="Dolznosti_ID" ColumnName="Dolznosti_ID" />
+                <ScalarProperty Name="DolznostName" ColumnName="DolznostName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gorods">
+            <EntityTypeMapping TypeName="Laba5Model.Gorods">
+              <MappingFragment StoreEntitySet="Gorods">
+                <ScalarProperty Name="Gorod_ID" ColumnName="Gorod_ID" />
+                <ScalarProperty Name="GorodName" ColumnName="GorodName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginPasses">
+            <EntityTypeMapping TypeName="Laba5Model.LoginPasses">
+              <MappingFragment StoreEntitySet="LoginPasses">
+                <ScalarProperty Name="LoginPass_ID" ColumnName="LoginPass_ID" />
+                <ScalarProperty Name="Loginn" ColumnName="Loginn" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="FK_Dolznosti" ColumnName="FK_Dolznosti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SNM_Sortudnicks">
+            <EntityTypeMapping TypeName="Laba5Model.SNM_Sortudnicks">
+              <MappingFragment StoreEntitySet="SNM_Sortudnicks">
+                <ScalarProperty Name="SNM_Sortudnick_ID" ColumnName="SNM_Sortudnick_ID" />
+                <ScalarProperty Name="SortudnickSurname" ColumnName="SortudnickSurname" />
+                <ScalarProperty Name="SortudnickName" ColumnName="SortudnickName" />
+                <ScalarProperty Name="SortudnickMiddleName" ColumnName="SortudnickMiddleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudnicks">
+            <EntityTypeMapping TypeName="Laba5Model.Sotrudnicks">
+              <MappingFragment StoreEntitySet="Sotrudnicks">
+                <ScalarProperty Name="Sotrudnick_ID" ColumnName="Sotrudnick_ID" />
+                <ScalarProperty Name="FK_Dolznost" ColumnName="FK_Dolznost" />
+                <ScalarProperty Name="FK_SNM_Sortudnick" ColumnName="FK_SNM_Sortudnick" />
+                <ScalarProperty Name="FK_LoginPass" ColumnName="FK_LoginPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeDostavkis">
+            <EntityTypeMapping TypeName="Laba5Model.TypeDostavkis">
+              <MappingFragment StoreEntitySet="TypeDostavkis">
+                <ScalarProperty Name="TypeDostavki_ID" ColumnName="TypeDostavki_ID" />
+                <ScalarProperty Name="TypeDostavki" ColumnName="TypeDostavki" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOplatis">
+            <EntityTypeMapping TypeName="Laba5Model.TypeOplatis">
+              <MappingFragment StoreEntitySet="TypeOplatis">
+                <ScalarProperty Name="TypeOplati_ID" ColumnName="TypeOplati_ID" />
+                <ScalarProperty Name="TypeOplati" ColumnName="TypeOplati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unitazs">
+            <EntityTypeMapping TypeName="Laba5Model.Unitazs">
+              <MappingFragment StoreEntitySet="Unitazs">
+                <ScalarProperty Name="Unitaz_ID" ColumnName="Unitaz_ID" />
+                <ScalarProperty Name="UnitazName" ColumnName="UnitazName" />
+                <ScalarProperty Name="FK_UnitazType" ColumnName="FK_UnitazType" />
+                <ScalarProperty Name="UnitazPrice" ColumnName="UnitazPrice" />
+                <ScalarProperty Name="FK_CountryProizvodstva" ColumnName="FK_CountryProizvodstva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnitazTypes">
+            <EntityTypeMapping TypeName="Laba5Model.UnitazTypes">
+              <MappingFragment StoreEntitySet="UnitazTypes">
+                <ScalarProperty Name="UnitazType_ID" ColumnName="UnitazType_ID" />
+                <ScalarProperty Name="UnitazType" ColumnName="UnitazType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakazs">
+            <EntityTypeMapping TypeName="Laba5Model.Zakazs">
+              <MappingFragment StoreEntitySet="Zakazs">
+                <ScalarProperty Name="Zakaz_ID" ColumnName="Zakaz_ID" />
+                <ScalarProperty Name="FK_Unitaz" ColumnName="FK_Unitaz" />
+                <ScalarProperty Name="FK_Bill" ColumnName="FK_Bill" />
+                <ScalarProperty Name="KolvoUnitaz" ColumnName="KolvoUnitaz" />
+                <ScalarProperty Name="PriceBill" ColumnName="PriceBill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

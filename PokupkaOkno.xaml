@@ -1,0 +1,70 @@
+﻿<Window x:Class="Laba5.PokupkaOkno"
+        xmlns:mt="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laba5"
+        mc:Ignorable="d"
+        Title="PokupkaOkno" Height="450" Width="800"
+        MinHeight="300px" MinWidth="300px">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.14*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.19*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/pixil-frame-0 (1).png" Stretch="Uniform"/>
+        <TextBlock Grid.ColumnSpan="3" Text="Покупка" TextAlignment="Center" FontSize="30px"/>
+        <Button x:Name="VihodBtm" Content="Выйти" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Click="VihodBtm_Click"/>
+        <TextBlock Grid.Row="1" Text="Все товары" TextAlignment="Center" FontSize="20px"/>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Полная цена:" TextAlignment="Right" FontSize="20px"/>
+            <TextBlock x:Name="PriceTblock" Grid.Column="1" TextAlignment="Left" FontSize="20px"/>
+        </Grid>
+        <DataGrid x:Name="TovariDG" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding UnitazName}" Header="Название"/>
+                <DataGridTextColumn Binding="{Binding UnitazPrice}" Header="Цена"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="PokupkiDG" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="2" Grid.Row="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding unit.UnitazName}" Header="Название"/>
+                <DataGridTextColumn Binding="{Binding unit.UnitazPrice}" Header="Цена"/>
+                <DataGridTextColumn Binding="{Binding kolvo}" Header="Количество"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button x:Name="DobavBtm" Grid.Row="1" Click="DobavBtm_Click">
+                <mt:PackIcon Kind="ArrowRight"/>
+            </Button>
+            <Button x:Name="UbratBtm" Grid.Row="3" Click="UbratBtm_Click">
+                <mt:PackIcon Kind="ArrowBack"/>
+            </Button>
+        </Grid>
+        <ComboBox x:Name="TypeOplatiCBox" FontSize="15px" mt:HintAssist.Hint="Тип оплаты" Grid.Row="3" SelectionChanged="TypeOplatiCBox_SelectionChanged"/>
+        <ComboBox x:Name="TypeDostavkiCBox" FontSize="15px" mt:HintAssist.Hint="Тип доставки" Grid.Column="2" Grid.Row="3" SelectionChanged="TypeDostavkiCBox_SelectionChanged"/>
+        <TextBox x:Name="ColvoDTbox" FontSize="15px" Grid.ColumnSpan="3" IsEnabled="False" Grid.Row="4" mt:HintAssist.Hint="Количество денег"/>
+        <Button x:Name="KupitBtm" Grid.ColumnSpan="3" Grid.Row="5" Content="Завершить покупку" Click="KupitBtm_Click"/>
+    </Grid>
+</Window>
